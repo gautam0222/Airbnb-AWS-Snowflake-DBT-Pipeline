@@ -1,0 +1,14 @@
+aws_snowflake_dbt_project:
+  outputs:
+    dev:
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE', 'AIRBNB') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE', 'TRANSFORMER_ROLE') }}"
+      schema: "{{ env_var('SNOWFLAKE_SCHEMA', 'dbt_schema') }}"
+      threads: "{{ env_var('DBT_THREADS', '4') | int }}"
+      type: snowflake
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE', 'COMPUTE_WH') }}"
+  target: dev
+
